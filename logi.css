@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0e0c0a;
+  --panel:     #1a1714;
+  --surface:   #221f1b;
+  --border:    #2e2b26;
+  --ink:       #f0ece4;
+  --muted:     #7a7368;
+  --accent:    #c8522a;
+  --accent-lt: #3a1f13;
+  --radius:    14px;
+  --transition: .25s cubic-bezier(.4,0,.2,1);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* subtle grain texture */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Outer form wrapper ───────────────────────────────────── */
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ── Login card ───────────────────────────────────────────── */
+.login {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 40px 36px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+}
+
+/* ── Tab row (Login / Sign up) ────────────────────────────── */
+.a1 {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 8px;
+}
+
+.a1 a {
+  flex: 1;
+  text-align: center;
+  padding: 9px 0;
+  border-radius: 999px;
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--muted);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* First tab (Login) is active on this page */
+.a1 a:first-child {
+  background: var(--accent);
+  color: #fff;
+}
+
+.a1 a:hover:not(:first-child) {
+  color: var(--ink);
+  background: var(--border);
+}
+
+/* ── Inputs ───────────────────────────────────────────────── */
+.login input[type="email"],
+.login input[type="password"] {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.login input[type="email"]::placeholder,
+.login input[type="password"]::placeholder {
+  color: var(--muted);
+}
+
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-lt);
+}
+
+/* ── Forgot password ──────────────────────────────────────── */
+.a2 {
+  font-size: .8rem;
+  color: var(--muted);
+  text-decoration: none;
+  align-self: flex-end;
+  margin-top: -6px;
+  transition: color var(--transition);
+}
+
+.a2:hover { color: var(--accent); }
+
+/* ── Submit button ────────────────────────────────────────── */
+.login input[type="submit"] {
+  width: 100%;
+  padding: 13px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background var(--transition), transform .15s;
+}
+
+.login input[type="submit"]:hover {
+  background: #b34522;
+  transform: translateY(-1px);
+}
+
+.login input[type="submit"]:active { transform: translateY(0); }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .login { padding: 32px 24px 28px; }
+}

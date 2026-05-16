@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.dashboard_sidebar{
+    
+    position: fixed;
+    top: 0;
+    background-color: darkcyan;
+    width: 200px;
+    height: 100%;
+}
+.dashboard_sidebar ul li{
+    list-style: none;
+    text-align: center;
+
+}
+.dashboard_sidebar ul li a{
+
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.dashboard_sidebar ul li a:hover{
+    background-color: gray;
+}
+.dashboard_main{
+    position: relative;
+    padding: 30px;
+    left: 45%;
+    margin-top: 10px;
+}
+.dashboard_main input{
+    display: block;
+    margin: 10px;
+    border-radius: 15px 50px;
+    padding: 20px;
+    border-left: 2px solid lightcoral;
+ border-right: 2px solid lightcoral;
+}
+.dashboard_main select{
+    display: inline-block;
+    margin: 10px;
+    border-radius: 15px 50px;
+    padding: 20px;
+    border-left: 2px solid lightcoral;
+ border-right: 2px solid lightcoral;
+}
+
+.dashboard_main textarea{
+    display: block;
+    margin: 10px;
+    border-left: lightcoral;
+ border-radius: 15px 50px;
+    padding: 20px;
+    width: 30%;
+
+}
+.button{
+    width: 15%;
+    background-color: rgb(146, 161, 170);
+    border-radius: 15px 50px;
+     border-left: 2px solid lightcoral;
+ border-right: 2px solid lightcoral;
+}
