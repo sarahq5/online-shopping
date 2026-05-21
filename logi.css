@@ -1,155 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
-
+ NOVA SHOP — login.css
+   ========================================= */
+ 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500;600&display=swap');
+ 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
-  --bg:        #0e0c0a;
-  --panel:     #1a1714;
-  --surface:   #221f1b;
-  --border:    #2e2b26;
-  --ink:       #f0ece4;
-  --muted:     #7a7368;
-  --accent:    #c8522a;
-  --accent-lt: #3a1f13;
-  --radius:    14px;
-  --transition: .25s cubic-bezier(.4,0,.2,1);
+  --cream:   #f7f5f2;
+  --white:   #ffffff;
+  --coal:    #1a1a1a;
+  --mid:     #6b6b6b;
+  --light:   #d9d4cc;
+  --accent:  #c8a882;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+  --transition: .25s ease;
 }
-
+ 
 html, body {
   height: 100%;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--coal);
+  -webkit-font-smoothing: antialiased;
 }
-
+ 
+a { text-decoration: none; color: inherit; }
+ 
+/* ── FULL PAGE LAYOUT ── */
 body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--bg);
-  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* subtle grain texture */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  padding: 24px;
 }
-
-/* ── Outer form wrapper ───────────────────────────────────── */
-form {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 24px 16px;
-}
-
-/* ── Login card ───────────────────────────────────────────── */
+ 
+/* ── CARD ── */
+form { width: 100%; max-width: 420px; }
+ 
 .login {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 44px 40px 36px;
-  width: 100%;
-  max-width: 400px;
+  background: var(--white);
+  border: 1px solid var(--light);
+  border-radius: 4px;
+  padding: 48px 44px 40px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  gap: 14px;
+  box-shadow: 0 4px 32px rgba(0,0,0,.07);
 }
-
-/* ── Tab row (Login / Sign up) ────────────────────────────── */
+ 
+/* ── BRAND MARK (above tabs) ── */
+.login::before {
+  content: 'Nova Shop';
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--coal);
+  text-align: center;
+  margin-bottom: 6px;
+}
+ 
+/* ── LOGIN / SIGN UP TABS ── */
 .a1 {
   display: flex;
-  gap: 4px;
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 4px;
+  border-bottom: 1px solid var(--light);
   margin-bottom: 8px;
+  gap: 0;
 }
-
+ 
 .a1 a {
   flex: 1;
   text-align: center;
-  padding: 9px 0;
-  border-radius: 999px;
-  font-size: .875rem;
+  font-size: .74rem;
   font-weight: 500;
-  text-decoration: none;
-  color: var(--muted);
-  transition: background var(--transition), color var(--transition);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--transition), border-color var(--transition);
 }
-
-/* First tab (Login) is active on this page */
+ 
 .a1 a:first-child {
-  background: var(--accent);
-  color: #fff;
+  color: var(--coal);
+  border-bottom-color: var(--coal);
 }
-
-.a1 a:hover:not(:first-child) {
-  color: var(--ink);
-  background: var(--border);
-}
-
-/* ── Inputs ───────────────────────────────────────────────── */
+ 
+.a1 a:hover { color: var(--coal); }
+ 
+/* ── INPUTS ── */
 .login input[type="email"],
 .login input[type="password"] {
   width: 100%;
   padding: 13px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--ink);
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
+  border: 1px solid var(--light);
+  border-radius: 2px;
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: .88rem;
+  color: var(--coal);
   outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition);
 }
-
-.login input[type="email"]::placeholder,
-.login input[type="password"]::placeholder {
-  color: var(--muted);
-}
-
+ 
 .login input[type="email"]:focus,
 .login input[type="password"]:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-lt);
+  border-color: var(--coal);
+  background: var(--white);
 }
-
-/* ── Forgot password ──────────────────────────────────────── */
+ 
+.login input[type="email"]::placeholder,
+.login input[type="password"]::placeholder {
+  color: #bbb;
+  font-size: .83rem;
+}
+ 
+/* ── FORGOT PASSWORD ── */
 .a2 {
-  font-size: .8rem;
-  color: var(--muted);
-  text-decoration: none;
-  align-self: flex-end;
-  margin-top: -6px;
+  font-size: .75rem;
+  color: var(--mid);
+  text-align: right;
+  letter-spacing: .03em;
+  margin-top: -4px;
   transition: color var(--transition);
 }
-
-.a2:hover { color: var(--accent); }
-
-/* ── Submit button ────────────────────────────────────────── */
+ 
+.a2:hover { color: var(--coal); }
+ 
+/* ── SUBMIT BUTTON ── */
 .login input[type="submit"] {
   width: 100%;
-  padding: 13px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
+  padding: 14px;
+  background: var(--coal);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: .78rem;
   font-weight: 500;
-  letter-spacing: .06em;
+  letter-spacing: .16em;
   text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
   cursor: pointer;
-  margin-top: 4px;
-  transition: background var(--transition), transform .15s;
+  transition: background var(--transition);
+  margin-top: 6px;
 }
-
-.login input[type="submit"]:hover {
-  background: #b34522;
-  transform: translateY(-1px);
+ 
+.login input[type="submit"]:hover { background: var(--accent); }
+ 
+/* ── BACK TO SHOP ── */
+.shoplink {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border-bottom: 1px solid var(--mid);
+  padding-bottom: 1px;
+  transition: color var(--transition), border-color var(--transition);
 }
-
-.login input[type="submit"]:active { transform: translateY(0); }
-
-/* ── Responsive ───────────────────────────────────────────── */
+ 
+.shoplink:hover { color: var(--coal); border-color: var(--coal); }
+ 
 @media (max-width: 480px) {
-  .login { padding: 32px 24px 28px; }
+  .login { padding: 36px 24px 32px; }
 }

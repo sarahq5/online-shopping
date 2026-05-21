@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="registr.css">
+    <link rel="stylesheet" href="registe.css">
 </head>
 <body>
  <a class="shoplink" href="index.php">Shop</a> 

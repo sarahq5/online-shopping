@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['username'];
             $_SESSION['user_role'] = $row['role'];
-            if($_SESSION['role'] == "user"){
+            if($_SESSION['role'] == "admin"){
                 header("Location: admin/dashboard.php");
                 }
             else{
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="logi.css">
     <title>Document</title>
 </head>
 <body>

@@ -1,182 +1,175 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500;600&display=swap');
+ 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
 :root {
-  --bg:        #f7f4ef;
-  --panel:     #e4dbd2;
-  --surface:   #ffffff;
-  --border:    #aba69e;
-  --ink:       #f0ece4;
-  --muted:     #7a7368;
-  --accent:    #aa421f;
-  --accent-lt: #cda696;
-  --radius:    14px;
-  --transition: .25s cubic-bezier(.4,0,.2,1);
+  --cream:   #f7f5f2;
+  --white:   #ffffff;
+  --coal:    #1a1a1a;
+  --mid:     #6b6b6b;
+  --light:   #d9d4cc;
+  --accent:  #c8a882;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+  --transition: .25s ease;
 }
-
-html, body { height: 100%; }
-
+ 
+html, body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--coal);
+  -webkit-font-smoothing: antialiased;
+}
+ 
+a { text-decoration: none; color: inherit; }
+ 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--bg);
-  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  padding: 24px;
 }
-
-/* ── Back to shop link ────────────────────────────────────── */
+ 
+/* ── BACK TO SHOP LINK ── */
 .shoplink {
   position: fixed;
   top: 24px;
-  left: 5%;
-  font-size: .85rem;
+  left: 32px;
+  font-size: .72rem;
   font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color var(--transition);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border-bottom: 1px solid var(--mid);
+  padding-bottom: 1px;
+  transition: color var(--transition), border-color var(--transition);
+  z-index: 10;
 }
-
-.shoplink::before {
-  content: "←";
-  font-size: 1rem;
-}
-
-.shoplink:hover { color: var(--accent); }
-
-/* ── Register card ────────────────────────────────────────── */
+ 
+.shoplink:hover { color: var(--coal); border-color: var(--coal); }
+ 
+/* ── CARD ── */
 .registerdiv {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 44px 40px 36px;
+  background: var(--white);
+  border: 1px solid var(--light);
+  border-radius: 4px;
+  padding: 48px 44px 40px;
   width: 100%;
-  max-width: 500px;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 24px 64px rgba(210,135,135,.5);
+  gap: 14px;
+  box-shadow: 0 4px 32px rgba(0,0,0,.07);
 }
-
-/* ── Tab row (Login / Sign up) ────────────────────────────── */
+ 
+/* ── BRAND MARK ── */
+.registerdiv::before {
+  content: 'Nova Shop';
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--coal);
+  text-align: center;
+  margin-bottom: 6px;
+}
+ 
+/* ── LOGIN / SIGN UP TABS ── */
 .a1 {
   display: flex;
-  gap: 4px;
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 4px;
+  border-bottom: 1px solid var(--light);
   margin-bottom: 8px;
 }
-
+ 
 .a1 a {
   flex: 1;
   text-align: center;
-  padding: 9px 0;
-  border-radius: 999px;
-  font-size: .875rem;
+  font-size: .74rem;
   font-weight: 500;
-  text-decoration: none;
-  color: var(--muted);
-  transition: background var(--transition), color var(--transition);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--transition), border-color var(--transition);
 }
-
-/* Second tab (Sign up) is active on this page */
+ 
+/* active tab = Sign up on this page */
 .a1 a:last-child {
-  background: var(--accent);
-  color: #fff;
+  color: var(--coal);
+  border-bottom-color: var(--coal);
 }
-
-.a1 a:hover:not(:last-child) {
-  color: var(--ink);
-  background: var(--border);
-}
-
-/* ── Form ─────────────────────────────────────────────────── */
+ 
+.a1 a:hover { color: var(--coal); }
+ 
+/* ── FORM INPUTS ── */
 .registerdiv form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
-
-/* ── Inputs ───────────────────────────────────────────────── */
+ 
 .registerdiv input[type="text"],
 .registerdiv input[type="email"],
-.registerdiv input[type="password"] {
-  width: 100%;
-  padding: 13px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
+.registerdiv input[type="password"],
 .registerdiv textarea {
   width: 100%;
   padding: 13px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
+  border: 1px solid var(--light);
+  border-radius: 2px;
+  background: var(--cream);
+  font-family: var(--font-body);
+  font-size: .88rem;
+  color: var(--coal);
   outline: none;
-  resize: vertical;
-  min-height: 88px;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition);
+  resize: none;
 }
-
-.registerdiv input::placeholder,
-.registerdiv textarea::placeholder {
-  color: var(--muted);
-}
-
+ 
 .registerdiv input:focus,
 .registerdiv textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-lt);
+  border-color: var(--coal);
+  background: var(--white);
 }
-
-/* ── Submit button ────────────────────────────────────────── */
-.registerdiv input.button,
+ 
+.registerdiv input::placeholder,
+.registerdiv textarea::placeholder {
+  color: #bbb;
+  font-size: .83rem;
+}
+ 
+.registerdiv textarea {
+  height: 90px;
+}
+ 
+/* ── SUBMIT BUTTON ── */
+.registerdiv .button,
 .registerdiv input[type="submit"] {
   width: 100%;
-  padding: 13px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
+  padding: 14px;
+  background: var(--coal);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: .78rem;
   font-weight: 500;
-  letter-spacing: .06em;
+  letter-spacing: .16em;
   text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
   cursor: pointer;
+  transition: background var(--transition);
   margin-top: 4px;
-  transition: background var(--transition), transform .15s;
 }
-
-.registerdiv input.button:hover,
+ 
+.registerdiv .button:hover,
 .registerdiv input[type="submit"]:hover {
-  background: #b34522;
-  transform: translateY(-1px);
+  background: var(--accent);
 }
-
-.registerdiv input.button:active,
-.registerdiv input[type="submit"]:active {
-  transform: translateY(0);
-}
-
-/* ── Responsive ───────────────────────────────────────────── */
+ 
 @media (max-width: 480px) {
-  .registerdiv { padding: 32px 24px 28px; }
+  .registerdiv { padding: 36px 24px 32px; }
+  .shoplink { left: 16px; }
 }

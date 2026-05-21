@@ -1,182 +1,303 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap');
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --bg:        #f7f4ef;
-  --panel:     #e4dbd2;
-  --surface:   #ffffff;
-  --border:    #aba69e;
-  --ink:       #f0ece4;
-  --muted:     #7a7368;
-  --accent:    #aa421f;
-  --accent-lt: #cda696;
-  --radius:    14px;
-  --transition: .25s cubic-bezier(.4,0,.2,1);
+/* =====================================================
+   NOVA SHOP - LIGHT THEME CSS
+   Modern, clean e-commerce styling
+===================================================== */
+ 
+/* -------------------------
+   RESET & BASE STYLES
+-------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-html, body { height: 100%; }
-
+ 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background-color: var(--bg);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-
-/* ── Back to shop link ────────────────────────────────────── */
-.shoplink {
-  position: fixed;
-  top: 24px;
-  left: 5%;
-  font-size: .85rem;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color var(--transition);
+ 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
 }
-
-.shoplink::before {
-  content: "←";
-  font-size: 1rem;
+ 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
-
-.shoplink:hover { color: var(--accent); }
-
-/* ── Register card ────────────────────────────────────────── */
-.registerdiv {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 44px 40px 36px;
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 24px 64px rgba(210,135,135,.5);
+ 
+/* -------------------------
+   HEADER
+-------------------------- */
+.header {
+    background: linear-gradient(135deg, #e08659 0%, #dd491c 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
-
-/* ── Tab row (Login / Sign up) ────────────────────────────── */
-.a1 {
-  display: flex;
-  gap: 4px;
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 4px;
-  margin-bottom: 8px;
+ 
+.header > a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-.a1 a {
-  flex: 1;
-  text-align: center;
-  padding: 9px 0;
-  border-radius: 999px;
-  font-size: .875rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: var(--muted);
-  transition: background var(--transition), color var(--transition);
+ 
+.header > a:hover {
+    transform: scale(1.05);
 }
-
-/* Second tab (Sign up) is active on this page */
-.a1 a:last-child {
-  background: var(--accent);
-  color: #fff;
+ 
+/* Category Navigation */
+.header > ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
-
-.a1 a:hover:not(:last-child) {
-  color: var(--ink);
-  background: var(--border);
+ 
+.header > ul li a {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    font-size: 0.95rem;
 }
-
-/* ── Form ─────────────────────────────────────────────────── */
-.registerdiv form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+ 
+.header > ul li a:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
 }
-
-/* ── Inputs ───────────────────────────────────────────────── */
-.registerdiv input[type="text"],
-.registerdiv input[type="email"],
-.registerdiv input[type="password"] {
-  width: 100%;
-  padding: 13px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
+ 
+/* User Navigation */
+.header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
 }
-
-.registerdiv textarea {
-  width: 100%;
-  padding: 13px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--muted);
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  outline: none;
-  resize: vertical;
-  min-height: 88px;
-  transition: border-color var(--transition), box-shadow var(--transition);
+ 
+.header nav ul li a {
+    padding: 0.6rem 1.3rem;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
 }
-
-.registerdiv input::placeholder,
-.registerdiv textarea::placeholder {
-  color: var(--muted);
+ 
+.header nav ul li a:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-.registerdiv input:focus,
-.registerdiv textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-lt);
+ 
+/* -------------------------
+   MAIN CONTENT
+-------------------------- */
+.main {
+    flex: 1;
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: start;
 }
-
-/* ── Submit button ────────────────────────────────────────── */
-.registerdiv input.button,
-.registerdiv input[type="submit"] {
-  width: 100%;
-  padding: 13px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: .9rem;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 4px;
-  transition: background var(--transition), transform .15s;
+ 
+/* No products message */
+.main > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    padding: 3rem;
 }
-
-.registerdiv input.button:hover,
-.registerdiv input[type="submit"]:hover {
-  background: #b34522;
-  transform: translateY(-1px);
+ 
+/* -------------------------
+   PRODUCT CARDS
+-------------------------- */
+.product {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-
-.registerdiv input.button:active,
-.registerdiv input[type="submit"]:active {
-  transform: translateY(0);
+ 
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
 }
-
-/* ── Responsive ───────────────────────────────────────────── */
+ 
+/* Product Image */
+.product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 3px solid #f0f0f0;
+}
+ 
+/* Product Info */
+.product p {
+    padding: 0.8rem 1.2rem;
+    margin: 0;
+}
+ 
+.product p:first-of-type {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    padding-top: 1.2rem;
+}
+ 
+.product p:nth-of-type(2) {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex: 1;
+    min-height: 60px;
+}
+ 
+.product p:nth-of-type(3) {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    font-weight: 500;
+}
+ 
+/* Product Price */
+.productprice {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #27ae60 !important;
+    padding: 0.5rem 1.2rem !important;
+}
+ 
+.productprice::before {
+    content: "$";
+    font-size: 1.1rem;
+    margin-right: 2px;
+}
+ 
+/* Buy Button */
+.product a {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, #e1766d 0%, #de5537 100%);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+    transition: all 0.3s ease;
+}
+ 
+.product a:hover {
+    background: linear-gradient(135deg, #cb8979 0%, #de6648 100%);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+ 
+/* -------------------------
+   FOOTER
+-------------------------- */
+.footer {
+    background: #bc935a;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.footer p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+ 
+/* -------------------------
+   RESPONSIVE DESIGN
+-------------------------- */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+ 
+    .header > a {
+        font-size: 1.5rem;
+    }
+ 
+    .main {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+ 
+    .product img {
+        height: 200px;
+    }
+}
+ 
 @media (max-width: 480px) {
-  .registerdiv { padding: 32px 24px 28px; }
+    .main {
+        grid-template-columns: 1fr;
+    }
+ 
+    .header > ul {
+        width: 100%;
+    }
+ 
+    .header nav ul {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+ 
+/* -------------------------
+   UTILITY CLASSES
+-------------------------- */
+.text-center {
+    text-align: center;
+}
+ 
+/* Loading Animation (optional) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+.product {
+    animation: fadeIn 0.5s ease-out;
 }
